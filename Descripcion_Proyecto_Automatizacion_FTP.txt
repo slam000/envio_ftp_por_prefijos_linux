@@ -1,0 +1,40 @@
+
+Proyecto: Automatización de Transferencia de Archivos con FTP
+-------------------------------------------------------------
+
+Descripción:
+------------
+Este proyecto consiste en desarrollar un sistema automatizado para la transferencia y descarga de archivos mediante FTP. El sistema se basa en dos scripts principales, uno para enviar archivos a un servidor FTP y otro para descargar archivos desde el mismo. La selección del usuario y contraseña para la transferencia se realiza en función del prefijo del nombre del archivo, utilizando un archivo de configuración para definir estas asociaciones.
+
+1. Script para Enviar Archivos a FTP:
+-------------------------------------
+Este script revisa un directorio específico (designado para almacenar archivos de SAP) y envía los archivos encontrados a un servidor FTP utilizando las credenciales específicas basadas en el prefijo del nombre del archivo.
+
+- Ruta del script: /ruta/al/script/send_file.sh
+- Frecuencia de ejecución: Configurable mediante cron (ejemplo: cada hora).
+
+2. Script para Descargar Archivos de FTP:
+-----------------------------------------
+Este script se conecta a un servidor FTP, verifica la existencia de archivos en un directorio remoto y, de encontrarlos, los descarga a un directorio local.
+
+- Ruta del script: /ruta/al/script/download_file.sh
+- Frecuencia de ejecución: Configurable mediante cron (ejemplo: cada hora).
+
+Archivo de Configuración (config.txt):
+--------------------------------------
+Este archivo contiene las asignaciones de prefijos de archivo a usuarios y contraseñas de FTP. Cada línea en el archivo sigue el formato 'prefijo:usuario:contraseña'.
+
+Ejemplo de contenido:
+xxx:usuarioEmpresa1:contraseñaEmpresa1
+zzz:usuarioEmpresa2:contraseñaEmpresa2
+abc:usuarioEmpresa3:contraseñaEmpresa3
+
+Consideraciones de Seguridad:
+------------------------------
+- Las contraseñas se almacenan en texto plano en el archivo de configuración. Se recomienda buscar mecanismos más seguros para el manejo de credenciales.
+- Se sugiere el uso de SFTP en lugar de FTP para una mayor seguridad.
+- Los permisos de los archivos de script y de configuración deben ser restringidos para prevenir accesos no autorizados.
+
+Nota: Los scripts y el archivo de configuración son ejemplos y pueden requerir ajustes según las necesidades específicas del entorno de producción.
+Notas Crontab: 0 * * * * /ruta/al/script/send_file.sh
+

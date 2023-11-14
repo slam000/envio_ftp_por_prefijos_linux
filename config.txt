@@ -1,0 +1,4 @@
+xxx:usuarioEmpresa1:contraseñaEmpresa1
+zzz:usuarioEmpresa2:contraseñaEmpresa2
+abc:usuarioEmpresa3:contraseñaEmpresa3
+
